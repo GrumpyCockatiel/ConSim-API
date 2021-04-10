@@ -2,6 +2,22 @@
 
 This documents the JSON document or input format for the Board Builder/ConSim API
 
+## Background & Motivation
+
+**BoardBuilder** (BB) generates old school table top war game boards that primary is played on hexagon maps. However, BB can use the same defintion input to make a square map as well. This repo documents the JSON document format to make something like this:
+
+![Example Board](./readme/example.png)
+
+Several properties are customizable and the image is generated real time via the ConSim API.
+
+### Alpha Testing
+For now access to the API is limited to alpha testers and an API key is required to use the API. If you want to help test it you can send me a request via [www.raydreams.com](https://www.raydreams.com/contact)
+
+## Usage
+The input is a JSON document which can be sent directly to the API or pulled from some other storage source or read from a local file.
+
+The output is the board image for now which is simple a PNG however JPEG with a quality level will be added as well as BASE64 wrapped in JSON.
+
 ## The Parent Wrapper
 The top level parent wrapper just defines a few fields for how to return the board
 
@@ -79,17 +95,17 @@ There are several ways to number each hex. Use the following enumerations in the
 The currently supported list of icon enums (case insensitive). All icons can be rotated by some angle of degrees.
 
 - **None** - remove the icon display without removing the other values
-- **Circle** -
-- **Triangle** -
+- **Circle**
+- **Triangle**
 - **TriangleDown** - a rotated triangle
-- **Square** -
-- **Diamond** a rotated square
-- **Star** -
-- **Plus** -
+- **Square**
+- **Diamond** - a rotated square
+- **Star**
+- **Plus**
 - **X** - a rotated plus
-- **Hex** -
-- **Pentagon** -
-- **Octagon** - (not implemented)
+- **Hex**
+- **Pentagon**
+- **Octagon**
 - **Cloud** - or tree top
 
 ## Terrain Pattern Enums
@@ -113,3 +129,6 @@ The currently supported list of enums (case insensitive) for terrain patterns. E
     - percent offset 1-100 of each even vs odd rows
 - **Diamonds** - (not implemented)
 - **Stones** - (not implemented)
+
+## Example JSON
+TBA
