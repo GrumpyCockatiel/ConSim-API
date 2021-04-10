@@ -1,2 +1,115 @@
-# ConSim-API
-Conflict Simulator board generation API
+# Conflict Simulator Board Generation API
+
+This documents the JSON document or input format for the Board Builder/ConSim API
+
+## The Parent Wrapper
+The top level parent wrapper just defines a few fields for how to return the board
+
+- **filename** [string] - specify a filename to be used if the image is downloaded locally, otherwise a random one is created
+- **q** [int] - quality of the image in the range 1-100, which only has meaning on JPEGs
+- **type** [enum] - the type of image file to return using the enums below.
+- **board** [object] - the board definition itself
+
+## The Board Object
+- **size** [int] hex height in pixel from base to top
+- **rows** [int] total number of rows
+- **cols** [int] total number of columns
+- **mw** [float] margin width
+- **bkg** [RGBA hex string] background color
+- **sw** [float] stroke width - the width of the hex outline
+- **sc** [RGBA hex string] stroke color - the color outlining each hex
+- **fill** [RGBA hex string] default hex fill color
+- **ls** [float] label font size which will be scaled if too big to fit the hex baseline
+- **lc** [RGBA hex string] label color
+- **lseq** [enum] label sequence type
+- **lff** [string] label font family - not yet implemented
+- **origin** [bool] whether to draw the orgin dot on each hexes with no icon or not
+- **hexes** [object array] list of hexes to override thre base values
+- **terrains** [object array] define spaces to fill with a terrain texture
+
+## A Space Location Object
+For now just defines a board space in 2D row column
+- **row** [int] The row of the space
+- **col** [int] the column of the space
+
+## A Board Space Override Options
+Board spaces will be drawn using the parent values unless an override is specified by Row,Column
+
+- **space** [object] a space location object
+- **color** [RGBA hex string] the fill color of this specific space
+- **lc** [RGBA hex string] the override color of the label
+- **label** [string] a label override value
+- **icon** [object] custom icon in this space
+
+## A Space Icon
+The options for icons in a space
+
+- **type** [enum] the icon type enum (see below)
+- **fill** [RGBA hex value] the fill color of icon
+- **stroke** [RGBA hex value] the stroke color of the icon
+- **angle** [float] how much to rotate an icon in degrees, only applied where it makes sense
+
+## Terrain Options
+The options to set on each terrain pattern. The same space can have multiple textures though there is no layer order parameter yet.
+
+- **type** [enum] the terrain type enum (see below)
+- **color** [RGBA hex value] the line color the pattern is drawn in
+- **angle** [float] (not implemented) angle in degrees to rotate the pattern
+- **spaces** [object array] - array of space object to specify which spaces to texture
+- **options** [float array] - the input options unique to each patter to specify how to draw it, though each pattern has default values
+
+## RGBA Hex String
+Color values are specified as RGBA Hex e.g. A3126700. The hash symbol is not required and the last two hex digits indicate the opacity with FF being fully opaque and 00 fully transparent. Obviously a fully transparent color will result in nothing being seen. You may still use regular RGB hex strings, the Alpha bits are optional.
+
+The pareser will always make an attempt to interpret your color value and fallback to default values.
+
+## Space Numbering Enums
+There are several ways to number each hex. Use the following enumerations in the `lseq` parameter.
+
+- **None** - don't number the spaces
+- **RowSequence** - increment across by row major
+- **ColSequence** - increment down by column major
+- **RowColZeroPad** - e.g. 0207 with row being first
+- **ColRowZeroPad** - e.g. 0207 with column being first
+- **Index** - the actual index in the data structure which starts at 0
+- **ID** - the actual ID used for that space which for now is the same as RowSequence but could later change
+- **Left** - (not implemented) Metagaming used a unqiue numbering starting along the left margin and incrementing back up
+
+## Icon Enums
+The currently supported list of icon enums (case insensitive). All icons can be rotated by some angle of degrees.
+
+- **None** - remove the icon display without removing the other values
+- **Circle** -
+- **Triangle** -
+- **TriangleDown** - a rotated triangle
+- **Square** -
+- **Diamond** a rotated square
+- **Star** -
+- **Plus** -
+- **X** - a rotated plus
+- **Hex** -
+- **Pentagon** -
+- **Octagon** - (not implemented)
+- **Cloud** - or tree top
+
+## Terrain Pattern Enums
+The currently supported list of enums (case insensitive) for terrain patterns. Each type has its own unique set of optional paramters input that alter the appearance which is an array of float values
+
+- **None** - remove the pattern display without removing the other values
+- **Weave** - [width, gap]
+    - pixel width of each line
+    - pixel spacing between each line
+- **Dots** - [size, spacing]
+    - radius of the dots
+    - pixel spacing between each dot
+- **RandomDots** - [density]
+    - density of the dots as a value of 1-100 meaning 0.1% to 10% of the actual pixels
+- **ZigZag** - (not implemented)
+- **Waves** - (not implemented)
+- **Bricks** - [height, width, thickness, offset]
+    - pixel height of each line
+    - pixel width of each rectangle
+    - thickness of the morter lines
+    - percent offset 1-100 of each even vs odd rows
+- **Diamonds** - (not implemented)
+- **Stones** - (not implemented)
