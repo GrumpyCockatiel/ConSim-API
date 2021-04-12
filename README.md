@@ -23,7 +23,7 @@ The top level parent wrapper just defines a few fields for how to return the boa
 
 - **filename** [string] - specify a filename to be used if the image is downloaded locally, otherwise a random one is created
 - **q** [int] - quality of the image in the range 1-100, which only has meaning on JPEGs
-- **type** [enum] - the type of image file to return using the enums below.
+- **type** [enum] - the type of image file to return using the enums below. For now only RAW PNGs are returned.
 - **board** [object] - the board definition itself
 
 ## The Board Object
@@ -132,5 +132,65 @@ The currently supported list of enums (case insensitive) for terrain patterns. E
 - **Diamonds** - (not implemented)
 - **Stones** - (not implemented)
 
+## File Type Response Enums
+The response type will be settable in the future but for now is set to a PNG.
+
+- **RawPNG** - returns a PNG of the board with the filename set in the disposition header
+- **RawJPEG** - (not implemented) returns a JPEG at the input quality with the filename set in the disposition header
+- **WrappedPNG** - (not implemented) - BASE64 encodes the PNG and then wraps it in JSON with additional metadata
+- **WrappedJPEG** - (not implemented)- BASE64 encodes the JPEG and then wraps it in JSON with additional metadata
+- **SVG** - (not implemented) - returns a SVG file of the board
+
 ## Example JSON
-TBA
+The following is a simple example of input or stored document input instance.
+```
+{
+    "filename": "mygameboard",
+    "q": 75,
+    "type": "rawpng",
+    "board": {
+        "size": 120,
+        "rows": 14,
+        "cols": 16,
+        "lseq": "RowColZeroPad",
+        "fill": "7cea43",
+        "sc": "e1e1e1",
+        "sw": 2.0,
+        "bkg": "5400ff",
+        "lc": "000000",
+        "ls": 15.0,
+        "lff": "Courier",
+        "mw": 30.0,
+        "origin": true,
+        "terrains": [
+            {
+                "type": "weave",
+                "color":"ff000099",
+                "options":[2,10],
+                "spaces": [
+                    {
+                        "row": 3,
+                        "col": 3
+                    }
+                ]
+            }
+        ],
+        "hexes": [
+            {
+                "space": {
+                    "row": 2,
+                    "col": 3
+                },
+                "color": "06c5fd",
+                "label": null,
+                "lc": "000000",
+                "icon": {
+                    "type": "pentagon",
+                    "fill": "000099",
+                    "stroke": "000000"
+                }
+            }
+        ]
+    }
+}
+```
