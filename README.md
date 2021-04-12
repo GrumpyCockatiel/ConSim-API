@@ -121,7 +121,9 @@ The currently supported list of enums (case insensitive) for terrain patterns. E
 - **RandomDots** - [density]
     - density of the dots as a value of 1-100 meaning 0.1% to 10% of the actual pixels
 - **ZigZag** - (not implemented)
-- **Waves** - (not implemented)
+- **Waves** - [amplitude, frequency] Sine wave pattern
+    - height of the waves
+    - pixels before repeating a Sine wave
 - **Bricks** - [height, width, thickness, offset]
     - pixel height of each line
     - pixel width of each rectangle
