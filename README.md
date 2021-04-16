@@ -56,6 +56,7 @@ Board spaces will be drawn using the parent values unless an override is specifi
 - **lc** [RGBA hex string] the override color of the label
 - **label** [string] a label override value
 - **icon** [object] custom icon in this space
+- **edges** [object] Edge Options overrides the base border style
 
 ## A Space Icon
 The options for icons in a space
@@ -73,6 +74,14 @@ The options to set on each terrain pattern. The same space can have multiple tex
 - **angle** [float] (not implemented) angle in degrees to rotate the pattern
 - **spaces** [object array] - array of space object to specify which spaces to texture
 - **options** [float array] - the input options unique to each patter to specify how to draw it, though each pattern has default values
+
+## Edge Options
+Override a specific edge of any space. Numbering starts from the top and goes clockwise.
+- **side** [int] which side this applies to
+- **color** [RGBA hex value] the edge color
+- **weight** [float] the stroke weight of the edge
+
+![Example Board](./readme/sides.png)
 
 ## RGBA Hex String
 Color values are specified as RGBA Hex e.g. A3126700. The hash symbol is not required and the last two hex digits indicate the opacity with FF being fully opaque and 00 fully transparent. Obviously a fully transparent color will result in nothing being seen. You may still use regular RGB hex strings, the Alpha bits are optional.
