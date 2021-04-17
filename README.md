@@ -116,6 +116,9 @@ The currently supported list of icon enums (case insensitive). All icons can be 
 - **Pentagon**
 - **Octagon**
 - **Cloud** - or tree top
+- **Dungeon**
+- **Castle** - a 180 Dungeon
+- **Arrow**
 
 ## Terrain Pattern Enums
 The currently supported list of enums (case insensitive) for terrain patterns. Each type has its own unique set of optional paramters input that alter the appearance which is an array of float values
