@@ -40,8 +40,9 @@ The top level parent wrapper just defines a few fields for how to return the boa
 - **lseq** [enum] label sequence type
 - **lff** [string] label font family - not yet implemented
 - **origin** [bool] whether to draw the orgin dot on each hexes with no icon or not
-- **hexes** [object array] list of hexes to override thre base values
+- **hexes** [object array] list of hexes to override thre base values (NOTE: this property name will change)
 - **terrains** [object array] define spaces to fill with a terrain texture
+- **paths** [object array] an array of path elements
 
 ## A Space Location Object
 For now just defines a board space in 2D row column
@@ -56,10 +57,10 @@ Board spaces will be drawn using the parent values unless an override is specifi
 - **lc** [RGBA hex string] the override color of the label
 - **label** [string] a label override value
 - **icon** [object] custom icon in this space
-- **edges** [object] Edge Options overrides the base border style
+- **edges** [object] Edge Options overrides the base border style. Later this will be used to specify edge icons.
 
 ## A Space Icon
-The options for icons in a space
+The options for icons centered in the middel of the space
 
 - **type** [enum] the icon type enum (see below)
 - **fill** [RGBA hex value] the fill color of icon
@@ -80,6 +81,12 @@ Override a specific edge of any space. Numbering starts from the top and goes cl
 - **side** [int] which side this applies to
 - **color** [RGBA hex value] the edge color
 - **weight** [float] the stroke weight of the edge
+
+## Paths
+The array of paths lets you sepcify long continuous paths
+- **color** [RGBA hex value] the edge color
+- **weight** [float] the stroke weight of the edge
+- **path** [object array] an array of Space Location objects using the additional `side` property to specify the side
 
 ![Example Board](./readme/sides.png)
 
