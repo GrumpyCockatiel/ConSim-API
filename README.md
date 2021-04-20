@@ -91,9 +91,13 @@ The array of paths lets you sepcify long continuous paths
 ![Example Board](./readme/sides.png)
 
 ## RGBA Hex String
-Color values are specified as RGBA Hex e.g. A3126700. The hash symbol is not required and the last two hex digits indicate the opacity with FF being fully opaque and 00 fully transparent. Obviously a fully transparent color will result in nothing being seen. You may still use regular RGB hex strings, the Alpha bits are optional.
+Color values are specified as RGBA Hex e.g. `A3126700`. The hash symbol is not required and the last two hex digits indicate the opacity with FF being fully opaque and 00 fully transparent. Obviously a fully transparent color will result in nothing being seen. You may still use regular RGB hex strings, the Alpha bits are optional so `A31267` is also valid.
 
-The pareser will always make an attempt to interpret your color value and fallback to default values.
+The parser will always make an attempt to interpret your color value and fallback to default values.
+
+You may also use the [Web Safe Color](https://en.wikipedia.org/wiki/Web_colors) names.
+
+Three digit values will not cause an error but will not give you the color you expect. They are not yet support. Expand them to 6 digit for now.
 
 ## Space Numbering Enums
 There are several ways to number each hex. Use the following enumerations in the `lseq` parameter.
@@ -126,6 +130,9 @@ The currently supported list of icon enums (case insensitive). All icons can be 
 - **Dungeon**
 - **Castle** - a 180 Dungeon
 - **Arrow**
+- **Ring**
+- **Tower**
+- **Bar** - thin rectangle
 
 ## Terrain Pattern Enums
 The currently supported list of enums (case insensitive) for terrain patterns. Each type has its own unique set of optional paramters input that alter the appearance which is an array of float values
