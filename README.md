@@ -60,7 +60,7 @@ Board spaces will be drawn using the parent values unless an override is specifi
 - **edges** [object] Edge Options overrides the base border style. Later this will be used to specify edge icons.
 
 ## A Space Icon
-The options for icons centered in the middel of the space
+The options for icons centered in the middel of the space. For now stroke weight is fixed at 1.
 
 - **type** [enum] the icon type enum (see below)
 - **fill** [RGBA hex value] the fill color of icon
@@ -112,7 +112,9 @@ There are several ways to number each hex. Use the following enumerations in the
 - **Left** - (not implemented) Metagaming used a unqiue numbering starting along the left margin and incrementing back up
 
 ## Icon Enums
-The currently supported list of icon enums (case insensitive). All icons can be rotated by some angle of degrees.
+The currently supported list of icon enums (case insensitive). All icons can be rotated by some angle of degrees. A few pre-rotated icons are provided for convenience.
+
+More shapes are added all the time.
 
 - **None** - remove the icon display without removing the other values
 - **Circle**
@@ -133,6 +135,7 @@ The currently supported list of icon enums (case insensitive). All icons can be 
 - **Ring**
 - **Tower**
 - **Bar** - thin rectangle
+- **Splat** - a splat star pattern
 
 ## Terrain Pattern Enums
 The currently supported list of enums (case insensitive) for terrain patterns. Each type has its own unique set of optional paramters input that alter the appearance which is an array of float values
