@@ -37,6 +37,10 @@ For now the only public methods are listed below. In order to use the complete c
 		* min (int:[1,max]) the minimum number of monsters in the random encounter
         * max (int:[min,20]) the maximum number of monsters in the random encounter
 	* output: (JSON array) returns an array of monster statistics to use in TFT
+* **Signature** - Simple API Ping to test the service is alive.
+	* Methods: GET
+	* inputs: (none)
+	* output: (string) service signature string and echo info
 
 ## The Parent Wrapper
 The top level parent wrapper just defines a few fields for how to return the board
