@@ -18,6 +18,26 @@ The input is a JSON document which can be sent directly to the API or pulled fro
 
 The output is the board image for now which is simple a PNG however JPEG with a quality level will be added as well as BASE64 wrapped in JSON.
 
+### The ConSim API
+
+The API base URL is:
+
+`https://rayrpg.com/api/`
+
+For now the only public methods are listed below. In order to use the complete custom method you will need a personal API token to meter your usage of the API in a 24 hour period. This is to prevent people from writing an unauthorized client against the API. 
+
+* **RandomBoard** - Simply generates a random board between 6x6 and 10x10 in size and places some random icons. Purely for demo purposes and testing.
+	* Methods: GET
+	* inputs:
+		* type (string:hex|sq) specifies either to draw as a hex or square board, the default is hex
+	* output: (binary) returns the board as an image file
+* **RandomMonster** - Just a fun API that will generate random monster stats for The Fantasy Trip mechanics. The random party will be from `min` to `max` monsters.
+	* Methods: GET|POST
+	* inputs:
+		* min (int:[1,max]) the minimum number of monsters in the random encounter
+        * max (int:[min,20]) the maximum number of monsters in the random encounter
+	* output: (JSON array) returns an array of monster statistics to use in TFT
+
 ## The Parent Wrapper
 The top level parent wrapper just defines a few fields for how to return the board
 
@@ -114,7 +134,7 @@ There are several ways to number each hex. Use the following enumerations in the
 ## Icon Enums
 The currently supported list of icon enums (case insensitive). All icons can be rotated by some angle of degrees. A few pre-rotated icons are provided for convenience.
 
-More shapes are added all the time.
+More icon shapes are added all the time.
 
 - **None** - remove the icon display without removing the other values
 - **Circle**
@@ -130,12 +150,13 @@ More shapes are added all the time.
 - **Octagon**
 - **Cloud** - or tree top
 - **Dungeon**
-- **Castle** - a 180 Dungeon
+- **Castle**
 - **Arrow**
 - **Ring**
 - **Tower**
 - **Bar** - thin rectangle
 - **Splat** - a splat star pattern
+- **Sword**
 
 ## Terrain Pattern Enums
 The currently supported list of enums (case insensitive) for terrain patterns. Each type has its own unique set of optional paramters input that alter the appearance which is an array of float values
