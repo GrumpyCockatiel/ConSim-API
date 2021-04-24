@@ -22,16 +22,18 @@ The output is the board image for now which is simple a PNG however JPEG with a 
 
 The API base URL is:
 
-`https://rayrpg.com/api/`
+`https://rayrpg.com/api`
 
 For now the only public methods are listed below. In order to use the complete custom method you will need a personal API token to meter your usage of the API in a 24 hour period. This is to prevent people from writing an unauthorized client against the API. 
 
 * **RandomBoard** - Simply generates a random board between 6x6 and 10x10 in size and places some random icons. Purely for demo purposes and testing.
+    * Syntax: `/RandomBoard?[type=]`
 	* Methods: GET
 	* inputs:
 		* type (string:hex|sq) specifies either to draw as a hex or square board, the default is hex
 	* output: (binary) returns the board as an image file
-* **RandomMonster** - Just a fun API that will generate random monster stats for The Fantasy Trip mechanics. The random party will be from `min` to `max` monsters.
+* **RandomMonster** - Just a fun API that will generate random monster stats for The Fantasy Trip mechanics. The random party will be from `min` to `max` monsters where 1 is the default.
+    * Syntax: `/RandomMonster?[min=]&[max=]`
 	* Methods: GET|POST
 	* inputs:
 		* min (int:[1,max]) the minimum number of monsters in the random encounter
