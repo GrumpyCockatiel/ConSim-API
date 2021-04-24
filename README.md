@@ -168,6 +168,10 @@ More icon shapes are added all the time.
 The currently supported list of enums (case insensitive) for terrain patterns. Each type has its own unique set of optional paramters input that alter the appearance which is an array of float values
 
 - **None** - remove the pattern display without removing the other values
+- **Lines** - [width, gap, dashing]
+    - pixel width of each line
+    - pixel spacing between each line
+    - dashed line with length of each on/off segment
 - **Weave** - [width, gap]
     - pixel width of each line
     - pixel spacing between each line
