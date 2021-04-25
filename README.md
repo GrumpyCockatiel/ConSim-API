@@ -173,6 +173,7 @@ More icon shapes are added all the time.
 - **Bar** - thin rectangle
 - **Splat** - a splat star pattern
 - **Sword**
+- **Heart**
 
 ## Terrain Pattern Enums
 The currently supported list of enums (case insensitive) for terrain patterns. Each type has its own unique set of optional paramters input that alter the appearance which is an array of float values
