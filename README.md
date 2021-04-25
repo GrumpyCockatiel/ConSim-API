@@ -22,6 +22,8 @@ The input is a JSON document which can be sent directly to the API or pulled fro
 
 The output is the board image for now which is simple a PNG however JPEG with a quality level will be added as well as BASE64 wrapped in JSON.
 
+You can try out a [random board](https://rayrpg.com/api/RandomBoard/) albeit with less options set.
+
 ### The ConSim API
 
 The API base URL is:
@@ -123,6 +125,8 @@ The array of paths lets you sepcify long continuous paths
 - **color** [RGBA hex value] the edge color
 - **weight** [float] the stroke weight of the edge
 - **path** [object array] an array of Space Location objects using the additional `side` property to specify the side
+
+Sides are always specified from the top going clockwise.
 
 ![Example Board](./readme/sides.png)
 
