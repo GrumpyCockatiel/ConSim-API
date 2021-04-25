@@ -2,6 +2,10 @@
 
 This documents the JSON document or input format for the Board Builder/ConSim API
 
+### Terms of Use
+
+This API captures all IP address even for the anonymous, open methods. This is to allowing blocking any IPs that abuse the API. By using any API in this service you agree to having your IP stored in the logs (much like any web server). Methods that require heavier processing will require a unique API key issued by us to allow us to meter and potentially shut off any access. This is keep anyone from creating an unauthorizef 3rd party client using the API. If you want an API key or want to use the API in this way, drop us a message at [www.raydreams.com](https://www.raydreams.com/contact)
+
 ## Background & Motivation
 
 **BoardBuilder** (BB) generates old school table top war game boards that primary is played on hexagon maps. However, BB can use the same defintion input to make a square map as well. This repo documents the JSON document format to make something like this:
