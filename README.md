@@ -30,23 +30,29 @@ The API base URL is:
 
 For now the only public methods are listed below. In order to use the complete custom method you will need a personal API token to meter your usage of the API in a 24 hour period. This is to prevent people from writing an unauthorized client against the API. 
 
+* **DrawBoard** - Draws a game board from the input JSON definition file as documented below. Get is limited to only a few options for demo purposes. In order to use POST and full features you will need an personal API key.
+    * Syntax: `/DrawBoard`
+    * Methods: GET|POST
+    * Inputs:
+        * object (JSON) the top level object starts with the Parent Wrapper below
+    * Output: (binary) the current output is a PNG file but other formats are being added
 * **RandomBoard** - Simply generates a random board between 6x6 and 10x10 in size and places some random icons. Purely for demo purposes and testing.
     * Syntax: `/RandomBoard?[type=]`
 	* Methods: GET
-	* inputs:
+	* Inputs:
 		* type (string:hex|sq) specifies either to draw as a hex or square board, the default is hex
-	* output: (binary) returns the board as an image file
+	* Output: (binary) returns the board as an image file
 * **RandomMonster** - Just a fun API that will generate random monster stats for The Fantasy Trip mechanics. The random party will be from `min` to `max` monsters where 1 is the default.
     * Syntax: `/RandomMonster?[min=]&[max=]`
 	* Methods: GET|POST
-	* inputs:
+	* Inputs:
 		* min (int:[1,max]) the minimum number of monsters in the random encounter
         * max (int:[min,20]) the maximum number of monsters in the random encounter
-	* output: (JSON array) returns an array of monster statistics to use in TFT
+	* Output: (JSON array) returns an array of monster statistics to use in TFT
 * **Signature** - Simple API Ping to test the service is alive.
 	* Methods: GET
-	* inputs: (none)
-	* output: (string) service signature string and echo info
+	* Inputs: (none)
+	* Output: (string) service signature string and echo info
 
 ## The Parent Wrapper
 The top level parent wrapper just defines a few fields for how to return the board
