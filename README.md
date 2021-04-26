@@ -110,7 +110,7 @@ The options to set on each terrain pattern. The same space can have multiple tex
 
 - **type** [enum] the terrain type enum (see below)
 - **color** [RGBA hex value] the line color the pattern is drawn in
-- **angle** [float] (not implemented) angle in degrees to rotate the pattern
+- **angle** [float] angle in degrees to rotate the pattern - NOTE some of these are still buggy on the edge spaces when rotated.
 - **spaces** [object array] - array of space object to specify which spaces to texture
 - **options** [float array] - the input options unique to each patter to specify how to draw it, though each pattern has default values
 
@@ -195,7 +195,6 @@ The currently supported list of enums (case insensitive) for terrain patterns. E
     - pixel spacing between each dot
 - **RandomDots** - [density]
     - density of the dots as a value of 1-100 meaning 0.1% to 10% of the actual pixels
-- **ZigZag** - (not implemented)
 - **Waves** - [amplitude, frequency] Sine wave pattern
     - height of the waves
     - pixels before repeating a Sine wave
@@ -204,8 +203,10 @@ The currently supported list of enums (case insensitive) for terrain patterns. E
     - pixel width of each rectangle
     - thickness of the morter lines
     - percent offset 1-100 of each even vs odd rows
-- **Diamonds** - (not implemented)
-- **Stones** - (not implemented)
+- **Stones** - [width, height]
+    - pixel width of each stone
+    - pixel height of each stone
+- **ZigZag** - (not implemented)
 
 ## File Type Response Enums
 The response type will be settable in the future but for now is set to a PNG.
