@@ -38,6 +38,11 @@ For now the only public methods are listed below. In order to use the complete c
     * Inputs:
         * object (JSON) the top level object starts with the Parent Wrapper below
     * Output: (binary) the current output is a PNG file but other formats are being added
+* **Fonts** - Returns a list of all the available system fonts that can be specified as a font family name. Custom fonts can be added.
+    * Syntax: `/Fonts`
+    * Methods: GET
+    * Inputs: (none)
+    * Output: (string array)
 * **RandomBoard** - Simply generates a random board between 6x6 and 10x10 in size and places some random icons. Purely for demo purposes and testing.
     * Syntax: `/RandomBoard?[type=]`
 	* Methods: GET
